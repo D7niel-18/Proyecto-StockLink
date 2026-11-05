@@ -1,0 +1,48 @@
+/* Iconos de la navegación lateral.
+   Cada icono es un archivo SVG externo usado como máscara: así toma el
+   color del texto (currentColor) y cambia con el tema y el estado activo. */
+.navegacion__icono {
+  display: inline-block;
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.625rem;
+  vertical-align: -0.2em;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.navegacion__icono--panel {
+  -webkit-mask-image: url("../svg/nav-panel.svg");
+  mask-image: url("../svg/nav-panel.svg");
+}
+
+.navegacion__icono--productos {
+  -webkit-mask-image: url("../svg/nav-productos.svg");
+  mask-image: url("../svg/nav-productos.svg");
+}
+
+.navegacion__icono--categorias {
+  -webkit-mask-image: url("../svg/nav-categorias.svg");
+  mask-image: url("../svg/nav-categorias.svg");
+}
+
+.navegacion__icono--almacenes {
+  -webkit-mask-image: url("../svg/nav-almacenes.svg");
+  mask-image: url("../svg/nav-almacenes.svg");
+}
+
+.navegacion__icono--movimientos {
+  -webkit-mask-image: url("../svg/nav-movimientos.svg");
+  mask-image: url("../svg/nav-movimientos.svg");
+}
+
+.navegacion__icono--empresas {
+  -webkit-mask-image: url("../svg/nav-empresas.svg");
+  mask-image: url("../svg/nav-empresas.svg");
+}
