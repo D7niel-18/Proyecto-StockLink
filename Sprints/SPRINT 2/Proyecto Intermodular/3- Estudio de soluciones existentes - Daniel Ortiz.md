@@ -32,7 +32,8 @@ Las tres ofrecen interfaces web modernas. Zoho e inFlow están centradas en el i
 
 - inFlow funciona en Windows y como aplicación web, con apps móviles para iPhone y Android, pero no está disponible en Mac.
 - Zoho Inventory es accesible desde navegador web (agnóstico de sistema operativo) y cuenta con apps para Android e iOS.
-- Sortly funciona en móvil, escritorio o tablet mediante sincronización en la nube, con apps nativas para iOS y Android. Ninguna de las tres ofrece aplicación de escritorio nativa para Linux.
+- Sortly funciona en móvil, escritorio o tablet mediante sincronización en la nube, con apps nativas para iOS y Android.
+- Ninguna de las tres ofrece aplicación de escritorio nativa para Linux.
 
 **Extensibilidad**
 
@@ -40,10 +41,10 @@ Zoho se integra bien con el resto de su propio ecosistema (Zoho Books, Zoho CRM)
 
 **Limitaciones detectadas**
 
-- Zoho: interfaz funcional pero algo genérica; puede resultar excesiva para una pyme que solo necesita controlar stock.
-- inFlow: sin plan gratuito, coste de entrada más alto, y no cubre Mac de forma nativa.
+- Zoho: interfaz funcional pero algo genérica; puede resultar excesiva para una pyme que solo necesita controlar stock. Permite tener varias organizaciones en una misma cuenta, pero hay que cambiar de una a otra y configurar cada una por separado.
+- inFlow: sin plan gratuito, coste de entrada más alto, y no cubre Mac de forma nativa. Está pensada para una sola empresa con varios almacenes.
 - Sortly: los límites de artículos únicos son el principal obstáculo (el plan Ultra se queda en 2.000 artículos), y los permisos de usuario no son muy detallados.
-- Ninguna de las tres ofrece gestión real de varias **empresas** independientes desde una misma sesión, que es el problema central que resuelve StockLink.
+- Ninguna de las tres está pensada para que una pyme con varios negocios independientes los gestione todos de forma sencilla desde una misma sesión, que es el problema central que resuelve StockLink.
 
 ### Matriz comparativa
 
@@ -53,9 +54,9 @@ Zoho se integra bien con el resto de su propio ecosistema (Zoho Books, Zoho CRM)
 | Multiplataforma | Web, Android, iOS | Windows, Web, Android, iOS (no Mac) | Web, Android, iOS | Web responsive (cualquier SO con navegador) |
 | Experiencia de usuario | Buena, algo genérica | Muy buena | Muy visual y sencilla | Simple, pensada para 3 perfiles de usuario |
 | Generación de informes | Sí (compras/ventas) | Sí (órdenes, stock) | Limitada (reports básicos) | Básica (alertas y stock por empresa/local) |
-| Soporte de periféricos | Lectores de código de barras | Lectores de código de barras | Escaneo QR/código de barras por móvil | No contemplado (fuera de alcance, ver exclusiones) |
-| Gestión multiempresa real | No | No | No | Sí (diferencial del proyecto) |
+| Soporte de periféricos | Lectores de código de barras | Lectores de código de barras | Escaneo QR/código de barras por móvil | No contemplado (fuera del alcance) |
+| Gestión multiempresa | Sí, con organizaciones separadas (hay que cambiar de una a otra) | No | No | Sí, es la función principal (varias empresas desde una sesión) |
 
 ### Justificación de la propuesta
 
-Ninguna de las tres soluciones analizadas resuelve de forma sencilla el caso de uso central de StockLink: una pyme con varios negocios independientes que necesita gestionarlos todos desde una única cuenta. Zoho e inFlow están pensadas para una sola empresa con varios almacenes, con un coste de entrada que puede no compensar a un negocio pequeño; Sortly, aunque es la más accesible y visual de las tres, limita rápidamente el número de artículos gestionables y tiene permisos poco detallados. StockLink se posiciona así en un hueco que ninguna cubre bien: la sencillez de uso de una herramienta ligera, combinada con una gestión multiempresa real pensada específicamente para pymes pequeñas con varios locales, sin coste de licencia ni los límites de artículos o usuarios que imponen estas plataformas comerciales.
+Ninguna de las tres soluciones analizadas está pensada de forma sencilla para el caso de uso central de StockLink: una pyme con varios negocios independientes que necesita gestionarlos todos desde una única cuenta. Zoho permite varias organizaciones, pero cada una se configura y se maneja por separado, dentro de una herramienta más compleja de lo que necesita un negocio pequeño. inFlow está pensada para una sola empresa con varios almacenes, con un coste de entrada que puede no compensar a un negocio pequeño. Sortly, aunque es la más accesible y visual de las tres, limita rápidamente el número de artículos gestionables y tiene permisos poco detallados. StockLink se posiciona así en un hueco que ninguna cubre bien: la sencillez de uso de una herramienta ligera, combinada con una gestión multiempresa pensada específicamente para pymes pequeñas con varios locales, sin coste de licencia ni los límites de artículos o usuarios que imponen estas plataformas comerciales.
