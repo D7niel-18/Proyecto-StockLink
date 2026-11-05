@@ -1,0 +1,86 @@
+// =============================================================
+// ANIMACIONES
+// Efectos sencillos con transition, transform y @keyframes.
+// Solo se animan transform y opacity (no obligan al navegador a
+// recalcular el diseño) y todo va dentro de con-movimiento: si el
+// usuario tiene activada la reducción de movimiento, no se aplica.
+// =============================================================
+@use "variables" as *;
+@use "mixins" as *;
+
+// ---------- Fotogramas ----------
+// Aparición: el elemento sube un poco mientras se hace visible
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Barra de ocupación: se "llena" de izquierda a derecha hasta su ancho
+@keyframes llenar-barra {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@include con-movimiento {
+  // ---------- 1. Iconos de la navegación ----------
+  // El icono se desplaza y crece un poco al pasar el ratón por el enlace
+  // o al enfocarlo con el teclado.
+  .navegacion__icono {
+    transition: transform $transicion;
+  }
+
+  .navegacion__enlace:hover .navegacion__icono,
+  .navegacion__enlace:focus-visible .navegacion__icono {
+    transform: translateX(2px) scale(1.15);
+  }
+
+  // ---------- 2. Botones ----------
+  // Al pasar el ratón el botón sube 1px; al pulsar baja 1px.
+  // Los botones desactivados no se mueven.
+  .boton {
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+  }
+
+  // ---------- 4. Barras de ocupación de los almacenes ----------
+  // Se llenan al cargar la página. Se anima scaleX y no width para no
+  // provocar recálculos de diseño.
+  .almacen__barra {
+    transform-origin: left center;
+    animation: llenar-barra 0.8s ease-out 0.2s both;
+  }
+
+  // ---------- 5. Aparición de tarjetas y paneles ----------
+  // Las tarjetas de estadísticas entran una tras otra (escalonadas).
+  .tarjeta-estadistica {
+    animation: aparecer 0.4s ease-out both;
+
+    @for $i from 2 through 4 {
+      &:nth-child(#{$i}) {
+        animation-delay: ($i - 1) * 0.06s;
+      }
+    }
+  }
+
+  .panel,
+  .almacen {
+    animation: aparecer 0.4s ease-out 0.12s both;
+  }
+}

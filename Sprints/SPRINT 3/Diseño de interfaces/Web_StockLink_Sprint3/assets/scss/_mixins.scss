@@ -46,3 +46,12 @@
   outline: 2px solid var(--sl-primary);
   outline-offset: 2px;
 }
+
+// Aplica el contenido solo si el usuario NO ha pedido reducir el movimiento.
+// Así, quien tenga activada esa opción en su sistema no ve animaciones.
+// Uso: @include con-movimiento { transition: transform $transicion; }
+@mixin con-movimiento {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
