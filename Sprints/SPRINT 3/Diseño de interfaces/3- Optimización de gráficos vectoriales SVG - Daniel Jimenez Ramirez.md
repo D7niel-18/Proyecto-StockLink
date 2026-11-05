@@ -44,3 +44,7 @@ El logotipo estaba escrito directamente dentro del HTML, repitiendo el mismo có
 - [x] Comprobar que los iconos de navegación se ven y quedan alineados con el texto, sin desplazar el contador de "Panel de control".
 - [x] Revisar dimensiones, color y proporciones frente al diseño original.
 - [x] Comprobar en la pestaña Red de las herramientas de desarrollo que los SVG cargan sin error 404.
+
+### Otros cambios
+
+- Se ha reorganizado los directorios de la web.
