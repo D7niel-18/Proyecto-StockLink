@@ -108,12 +108,17 @@ td {
   background: var(--sl-primary-soft);
 }
 
-// Si el usuario prefiere menos movimiento, se desactivan las animaciones
+// Si el usuario prefiere menos movimiento, se desactivan las animaciones.
+// Es la red de seguridad general: además, las animaciones de _animaciones.scss
+// solo se declaran con el mixin con-movimiento, así que ni siquiera se crean.
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
