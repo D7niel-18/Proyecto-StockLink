@@ -6,7 +6,7 @@ El objetivo principal de StockLink es centralizar la gestión del inventario de 
 
 La plataforma está pensada especialmente para empresas y pequeños negocios que necesitan una herramienta sencilla para controlar sus existencias sin depender de procesos manuales o de diferentes sistemas independientes.
 
----
+--- ---
 
 ## 📦 ¿Qué es StockLink?
 
