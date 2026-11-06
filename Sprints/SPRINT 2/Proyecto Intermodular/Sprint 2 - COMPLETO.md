@@ -1,5 +1,13 @@
 # Sprint 2: Capítulo II. Análisis del contexto y viabilidad
 
+## Coevaluación
+
+| Integrante | Calificacion |
+|---|---|
+| Daniel Ortiz | 100% |
+| Pepe Gil | 100% |
+| Daniel Jimenez | 100% |
+
 ## Índice
 
 - 2.1. Sector profesional y perfil de usuarios
