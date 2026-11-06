@@ -627,21 +627,240 @@ StockLink está pensada sobre todo para pequeñas y medianas empresas, aunque ta
 
 ### 2.7. Estudio de viabilidad legal y normativa
 
-### 2.7.1. Protección de datos personales
+###  Protección de datos personales
 
-*FASE PENDIENTE* 
+La aplicación va a guardar estos datos de carácter personal:
+
+- **De los usuarios:** nombre, apellidos, email de trabajo, empresa a la que pertenecen y el rol que tienen dentro de la aplicación.
+- **De acceso:** la contraseña, que se guarda cifrada y nunca tal cual.
+- **De proveedores y clientes de cada empresa:** nombre, teléfono y email de la persona de contacto, y el NIF si es autónomo.
+- **De uso:** la IP, el navegador y el registro de accesos.
+- **De actividad:** qué usuario hace cada movimiento de stock y cuándo.
+- **De facturación:** los datos del cliente si es autónomo.
+
+No se guardan datos especialmente sensibles como salud, ideología. Los datos de las empresas como tal no los protege el RGPD, pero los de autónomos, empleados y personas de contacto sí.
+
+### Base de legitimación
+
+StockLink tiene dos papeles. Por un lado es **responsable** de las cuentas de usuario y de la facturación. Por otro es **encargado** de los datos que cada empresa cliente mete en la aplicación, como sus proveedores. En ese caso los datos son de la empresa y StockLink solo los gestiona por ella, así que hace falta un contrato entre las dos partes (art. 28 RGPD).
+
+- **Cuentas de usuario:** se basan en la ejecución del contrato (art. 6.1.b), porque sin ellas no se puede ofrecer el servicio.
+- **Registro de accesos:** se basa en el interés legítimo (art. 6.1.f), para proteger la plataforma y detectar accesos extraños.
+- **Facturación:** se basa en una obligación legal (art. 6.1.c), porque lo exige la normativa fiscal.
+- **Newsletter y cookies que no sean necesarias:** se basan en el consentimiento expreso (art. 6.1.a). La casilla viene sin marcar y el usuario puede retirarlo cuando quiera.
+
+Solo se pide consentimiento cuando es realmente necesario. Para usar la aplicación el usuario no puede decir que no a ciertos datos, así que ahí la base correcta es el contrato.
+
+### Medidas de privacidad desde el diseño y por defecto
+
+### Control de accesos según el rol
+Cada usuario tiene un rol que limita lo que puede hacer:
+
+- **Administrador de empresa:** gestiona los usuarios y todo el inventario de su empresa.
+- **Gestor de stock:** crea, modifica y elimina productos y movimientos.
+- **Operario:** registra entradas y salidas, y el resto solo lo puede consultar.
+- **Solo lectura:** únicamente puede ver información.
+
+Cada persona tiene solo los permisos que necesita para su trabajo. Además, los datos de cada empresa están separados, de forma que una empresa nunca puede ver los de otra. Estos permisos se comprueban siempre en el servidor y no solo en lo que se ve en pantalla, porque lo de la pantalla se puede manipular.
+
+### Cómo se guardan las contraseñas
+Las contraseñas no se guardan nunca tal cual. Se transforman con un algoritmo de hash (bcrypt o Argon2id) al que se le añade un valor aleatorio distinto para cada usuario, así que aunque alguien consiguiera la base de datos no podría leer las contraseñas. Además:
+
+- Mínimo de 12 caracteres.
+- La sesión caduca pasado un tiempo corto.
+- Se bloquea el acceso un rato tras varios intentos fallidos.
+- Para recuperar la contraseña se envía un enlace que solo se puede usar una vez y que caduca.
+
+### Otras medidas de seguridad
+- Toda la aplicación funciona con HTTPS, para que los datos viajen protegidos.
+- Se protegen las consultas a la base de datos para evitar ataques que intenten colarse por los formularios.
+- El usuario de la base de datos solo tiene los permisos justos.
+- Los registros no guardan contraseñas.
+- Si hay una brecha de seguridad, se avisa a la AEPD en un máximo de 72 horas.
+
+### Pedir solo lo necesario
+- Solo se piden los datos imprescindibles. De un proveedor, por ejemplo, basta con nombre y email de contacto.
+- No se activan cookies ni analítica hasta que el usuario las acepte.
+- En los registros se guarda el número de usuario en lugar de su email.
+
+### Cuánto tiempo se guardan los datos y cuándo se borran
+
+- **Cuenta de usuario:** mientras dure el contrato. Al darse de baja se bloquea y más adelante se borra.
+- **Datos de cada empresa:** hasta que termina el contrato. Después la empresa elige si quiere que se los devuelvan o que se borren.
+- **Facturas:** 6 años, porque lo exige la ley, y después se eliminan.
+- **Registro de accesos:** 12 meses y luego se borra automáticamente.
+- **Copias de seguridad:** 30 días y se van sustituyendo por otras nuevas.
+- **Cuentas sin usar:** se avisa al usuario a los 12 meses y, si no vuelve, se da de baja o se anonimiza.
+
+El **bloqueo** (art. 32 LOPDGDD) consiste en que, cuando un dato se borra, se guarda aparte y sin que nadie lo use, solo por si hubiera que responder ante algún problema legal. Cuando ese plazo termina, se elimina del todo.
+
+### Derechos de los usuarios
+Cualquier persona puede pedir ver sus datos, corregirlos, borrarlos, limitar su uso, llevárselos en un archivo o oponerse a que se traten. Se le contesta en un máximo de un mes.
+
+## Conclusión
+
+StockLink cumple el RGPD y la LOPDGDD porque solo recoge los datos necesarios, se apoya sobre todo en el contrato, controla qué puede hacer cada usuario según su rol, mantiene separados los datos de cada empresa, protege las contraseñas y borra los datos cuando ya no hacen falta.
 
 ### 2.7.2. Propiedad intelectual y licencias
 
-*FASE PENDIENTE* 
+### Licencia del proyecto
+
+El código fuente desarrollado por el equipo de StockLink, incluyendo HTML, CSS, TypeScript, JavaScript y los componentes propios de la aplicación, se publicará bajo la **licencia MIT**.
+
+Esta licencia permite utilizar, modificar y distribuir el código, incluso con fines comerciales, siempre que se mantengan los avisos de copyright y la licencia original. Se ha elegido por su sencillez y flexibilidad, ya que facilita que otras personas puedan estudiar y reutilizar el proyecto.
+
+Los derechos de autor del código original corresponden a sus autores. La licencia MIT se aplicará al código propio, sin sustituir ni modificar las licencias de las herramientas y recursos de terceros que se incorporen.
+
+### Inventario de licencias de dependencias
+
+StockLink utiliza tecnologías de desarrollo, librerías y recursos externos que deben identificarse para conocer sus condiciones de uso.
+
+| Componente | Utilidad en StockLink | Licencia |
+| -- | -- | -- |
+| Angular | Desarrollo de la interfaz de usuario. | MIT |
+| Node.js | Entorno de ejecución del backend. | MIT |
+| Express | Gestión de rutas y peticiones HTTP del servidor. | MIT |
+| MySQL Community Edition | Sistema de gestión de bases de datos. | GPL |
+| Work Sans | Tipografía principal de la interfaz. | SIL Open Font License 1.1 |
+| JetBrains Mono | Tipografía para elementos técnicos y de marca. | SIL Open Font License 1.1 |
+| HTML, CSS y código propio | Estructura, estilos y funcionalidades desarrolladas por el equipo. | MIT, según la licencia elegida para el proyecto. |
+| Iconos SVG propios | Elementos gráficos de la interfaz. | 
+
+Las licencias indicadas corresponden a las licencias generales de los componentes identificados. Antes de cerrar la documentación se comprobarán las versiones concretas utilizadas y las licencias de las dependencias adicionales.
+
+### Compatibilidad de las licencias
+
+Las licencias MIT y SIL Open Font License 1.1 permiten utilizar los componentes correspondientes en proyectos de software y páginas web, respetando sus condiciones. Por ello, son compatibles, en términos generales, con la publicación de StockLink bajo MIT.
+
+MySQL Community Edition utiliza la licencia GPL, por lo que se revisarán sus condiciones según la forma en que se distribuya y utilice el sistema. El simple hecho de conectar una aplicación a una base de datos MySQL no implica automáticamente que todo el código de la aplicación deba publicarse bajo GPL.
+
+Además, se revisarán las dependencias instaladas mediante npm, incluidas las dependencias indirectas, para detectar posibles obligaciones adicionales o incompatibilidades antes de distribuir el proyecto.
+
+### Gestión y cumplimiento
+
+Para garantizar el cumplimiento de las licencias, el equipo realizará las siguientes acciones:
+
+- Mantener un inventario actualizado de las librerías, fuentes e iconos utilizados.
+- Revisar los archivos `package.json` y `package-lock.json` para identificar las dependencias del backend y sus versiones.
+- Consultar las licencias oficiales de los componentes antes de incorporarlos.
+- Conservar los avisos de copyright y los textos de licencia cuando sea necesario.
+- Evitar utilizar imágenes, iconos o recursos gráficos sin una licencia que permita su uso.
+- Documentar cualquier cambio importante en las dependencias y sus licencias.
+
+En conclusión, StockLink utilizará componentes con licencias conocidas y documentadas, respetando los derechos de sus autores y manteniendo una política de uso responsable de los recursos de terceros.
+ 
 
 ### 2.7.3. Accesibilidad y otros requisitos aplicables
 
-*FASE PENDIENTE* 
+## Objetivo de la accesibilidad
 
-## 2.8. Análisis de riesgos inicial
+La accesibilidad web tiene como objetivo garantizar que StockLink pueda ser utilizado por el mayor número posible de personas, incluidas aquellas que tengan limitaciones visuales, auditivas, motrices o dificultades para comprender la información presentada en pantalla.
 
-*FASE PENDIENTE*
+Para conseguirlo, el diseño y el desarrollo de la aplicación tendrán en cuenta las pautas de accesibilidad para el contenido web (WCAG) y los requisitos de accesibilidad de la norma UNE-EN 301 549, relacionados con los productos y servicios de las tecnologías de la información y la comunicación.
+
+La accesibilidad se tendrá en cuenta desde el diseño de las interfaces hasta la implementación y las pruebas. No se trata únicamente de mejorar el aspecto visual, sino de facilitar que todos los usuarios puedan navegar, consultar información y gestionar el inventario de forma comprensible y eficaz.
+
+## Medidas de accesibilidad
+
+### Contraste y uso del color
+
+Se comprobará que exista suficiente contraste entre el texto y el fondo para facilitar la lectura de la información. Como referencia, se utilizarán los criterios WCAG de nivel AA.
+
+StockLink contará con un tema claro y otro oscuro. Ambos deberán mantener un contraste adecuado entre los textos, los fondos, los campos de los formularios, los botones y los elementos de navegación.
+
+Además, los colores no se utilizarán como único medio para transmitir información. Por ejemplo, cuando un producto tenga pocas unidades disponibles, se mostrará un aviso como «Stock bajo» junto con el color de advertencia. De esta manera, los usuarios podrán comprender el estado del inventario aunque tengan dificultades para distinguir determinados colores.
+
+**Justificación:** un contraste insuficiente puede dificultar la lectura, especialmente en personas con baja visión o cuando se utiliza la aplicación en pantallas con mucha iluminación ambiental.
+
+### Navegación mediante teclado
+
+La aplicación permitirá utilizar sus principales funcionalidades sin depender exclusivamente del ratón. Los enlaces, botones, campos de formulario y demás controles interactivos deberán poder alcanzarse mediante el teclado.
+
+Se mantendrá un orden de tabulación lógico, siguiendo la distribución visual de la interfaz. También se mostrará un indicador de foco visible para que el usuario pueda identificar en todo momento qué elemento está seleccionado.
+
+Por ejemplo, un usuario deberá poder recorrer los campos del formulario de inicio de sesión, introducir sus credenciales y activar el botón de acceso utilizando el teclado.
+
+**Justificación:** algunas personas tienen dificultades para utilizar un ratón debido a limitaciones motrices o utilizan dispositivos de entrada alternativos. La navegación por teclado permite acceder a las funciones sin depender de este periférico.
+
+### Tamaño y legibilidad del texto
+
+Se utilizarán tipografías legibles, tamaños de letra adecuados y una jerarquía visual clara mediante títulos, subtítulos y textos secundarios.
+
+El diseño permitirá ampliar el texto y el contenido de la página sin perder información ni funcionalidad. Se evitarán textos excesivamente pequeños, párrafos difíciles de leer y elementos que dependan únicamente de diferencias sutiles de tamaño o color para comunicar su importancia.
+
+En las tablas de inventario, los nombres de los productos, las cantidades, las categorías y los avisos deberán poder identificarse fácilmente.
+
+**Justificación:** una buena legibilidad facilita la comprensión de la información y permite que los usuarios adapten la visualización a sus necesidades.
+
+### Compatibilidad con lectores de pantalla
+
+Se utilizará HTML semántico para estructurar correctamente las páginas.
+
+Los campos de los formularios tendrán etiquetas descriptivas asociadas, y los botones y enlaces utilizarán textos que expliquen claramente su función. Las imágenes que aporten información incluirán textos alternativos adecuados; las imágenes decorativas no generarán información redundante.
+
+También se proporcionarán mensajes de error comprensibles y asociados a los campos correspondientes. Cuando sea necesario, se utilizarán atributos ARIA para aportar información adicional a las tecnologías de asistencia, sin sustituir los elementos HTML semánticos.
+
+**Justificación:** los lectores de pantalla interpretan la estructura y las etiquetas de una página para comunicar su contenido a las personas con discapacidad visual. Una estructura correcta permite comprender mejor la interfaz y utilizar sus funcionalidades.
+
+### Formularios y mensajes de error
+
+Los formularios de StockLink, como los de inicio de sesión, registro y gestión de productos, indicarán claramente qué información debe introducirse en cada campo.
+
+Cuando se produzca un error, se mostrará un mensaje que explique qué ha ocurrido y cómo puede solucionarse. No se dependerá únicamente de un borde rojo o de un icono para señalar el problema.
+
+Por ejemplo, si un usuario introduce una cantidad de stock no válida, la aplicación mostrará un mensaje que indique que debe introducir una cantidad válida. Los errores deberán poder identificarse tanto visualmente como mediante tecnologías de asistencia.
+
+**Justificación:** los mensajes claros ayudan a evitar errores y permiten corregirlos sin confusión, especialmente a usuarios con dificultades de comprensión o que utilizan lectores de pantalla.
+
+### Diseño adaptable y accesible
+
+La interfaz se diseñará para funcionar en ordenadores, tabletas y móviles. Los elementos se reorganizarán según el tamaño de la pantalla, evitando que el contenido se corte o que los controles resulten difíciles de utilizar.
+
+Los botones y enlaces tendrán un tamaño y una separación adecuados para facilitar su selección, especialmente en pantallas táctiles. Las tablas y los listados de productos se adaptarán para que la información importante siga siendo accesible en pantallas pequeñas.
+
+**Justificación:** los usuarios pueden acceder a StockLink desde dispositivos diferentes y en condiciones de uso variadas. Un diseño adaptable facilita la consulta y gestión del inventario sin perder información ni funcionalidades esenciales.
+
+### Consistencia y claridad de la interfaz
+
+Se mantendrá una estructura coherente en las distintas páginas de StockLink. Los botones, menús, formularios, iconos y mensajes seguirán criterios visuales y de funcionamiento consistentes.
+
+Las acciones importantes, como añadir un producto, modificar existencias o eliminar un registro, estarán identificadas mediante textos claros. Cuando una operación pueda tener consecuencias importantes, se proporcionará una confirmación o una forma de revisar la acción antes de completarla.
+
+**Justificación:** una interfaz consistente reduce la necesidad de aprender cómo funciona cada pantalla por separado y facilita la navegación a usuarios con distintos niveles de experiencia tecnológica.
+
+## Comprobación de la accesibilidad
+
+Durante el desarrollo se realizarán pruebas para comprobar que las medidas previstas funcionan correctamente. Estas comprobaciones incluirán:
+
+- **Contraste:** verificar las combinaciones de colores de los temas claro y oscuro mediante herramientas de análisis de contraste.
+- **Teclado:** recorrer las páginas y formularios sin utilizar el ratón, comprobando el orden de navegación y la visibilidad del foco.
+- **Ampliación del texto:** aumentar el tamaño del contenido y comprobar que no se pierde información ni funcionalidad.
+- **Lectores de pantalla:** revisar la estructura, las etiquetas de los campos, los nombres de los controles y los mensajes de error.
+- **Diseño adaptable:** comprobar la visualización en diferentes tamaños de pantalla y navegadores.
+- **Formularios:** probar errores de validación para comprobar que los mensajes sean claros y accesibles.
+
+Las herramientas automáticas de evaluación podrán ayudar a detectar determinados problemas, pero se complementarán con comprobaciones manuales, ya que no todos los requisitos de accesibilidad pueden verificarse automáticamente.
+
+## Resultado esperado
+
+La aplicación StockLink pretende ofrecer una interfaz comprensible, coherente y accesible que facilite la gestión del inventario a usuarios con diferentes capacidades y niveles de experiencia tecnológica.
+
+La aplicación de estas medidas contribuirá a mejorar la legibilidad, la navegación, la prevención de errores y la adaptación a distintos dispositivos. El cumplimiento de los criterios de accesibilidad se evaluará durante las pruebas, por lo que no se considerará garantizado hasta que se hayan realizado las comprobaciones correspondientes.
+
+## 2.8 Análisis de riesgo inicial
+
+| ID  | Descripción del riesgo | Probabilidad | Impacto | Criticidad | Justificación |
+|-----|------------------------|--------------|---------|------------|---------------|
+| R01 | Falta de experiencia con alguna de las tecnologías que vamos a utilizar. | Media | Alto | Alta | **Falta de experiencia tecnológica:** El proyecto utiliza Angular, Node.js, Express y MySQL. La falta de experiencia con alguna de estas tecnologías puede provocar dificultades durante la implementación y aumentar el tiempo necesario para completar las tareas. |
+| R02 | Retrasos en las tareas previstas en los sprints. | Media | Alto | Alta | **Retrasos en los sprints:** Cada sprint tiene un periodo de ejecución limitado. Si una tarea requiere más tiempo del previsto o aparecen problemas inesperados, pueden retrasarse las entregas y acumularse tareas pendientes. |
+| R03 | Problemas de comunicación o coordinación entre los integrantes. | Media | Alto | Alta | **Problemas de comunicación y coordinación:** El equipo está formado por tres integrantes con responsabilidades diferentes. Una comunicación insuficiente o una mala distribución de las tareas puede provocar duplicación de trabajo, bloqueos o retrasos. |
+| R04 | Errores en el diseño o la estructura de la base de datos MySQL. | Media | Alto | Alta | **Errores en la base de datos:** StockLink necesita organizar la información de empresas, locales, usuarios, productos y movimientos de stock. Un diseño incorrecto de la base de datos puede provocar inconsistencias y dificultar la gestión de la información. |
+| R05 | Fallos de comunicación entre Angular y la API de Node.js/Express. | Media | Alto | Alta | **Fallos en la comunicación entre frontend y backend:** Angular y la API desarrollada con Node.js y Express deben intercambiar información correctamente. Las diferencias en las rutas, los formatos de datos o las respuestas pueden impedir que determinadas funcionalidades funcionen. |
+| R06 | Errores en el registro y actualización de movimientos de stock. | Baja | Alto | Media | **Pérdida de código o cambios defectuosos:** Esot puede acabar provocando cantidades incorrectas o inconsistencias. |
+| R07 | Problemas de rendimiento en dispositivos antiguos o con recursos limitados. | Media | Medio | Media | **Problemas de rendimiento y compatibilidad:** Los usuarios pueden acceder a StockLink desde ordenadores, tabletas y móviles con diferentes capacidades y navegadores. Una interfaz poco optimizada puede provocar lentitud o problemas de visualización. |
+| R08 | Aumento de requisitos o incorporación de funcionalidades no previstas. | Media | Alto | Alta | **Ampliación del alcance del proyecto:** La incorporación de nuevas funcionalidades durante el desarrollo puede aumentar la carga de trabajo y dificultar el cumplimiento de la planificación inicial. |
+| R09 | Falta de tiempo para realizar pruebas y documentar el proyecto. | Media | Alto | Alta | **Falta de tiempo para pruebas y documentación:** El proyecto debe completar sus funcionalidades y generar documentación dentro de un calendario establecido. Si el desarrollo consume más tiempo del previsto, podrían reducirse las pruebas y quedar apartados de la memoria sin completar. |
+| R10 | Problemas durante el despliegue | Media | Alto | Alta | **Problemas con el despliegue:** Problemas durante la configuración, despliegue o conexión con la base de datos en el entorno de producción. |
 
 # 3\. Planificación y gestión del proyecto
 
