@@ -17,6 +17,9 @@
 
   // Columna izquierda: presentación (solo visible en escritorio)
   &__presentacion {
+    position: relativ;
+    isolation: isolate; // el vídeo queda detrás del contenido sin salirse del panel
+    overflow: hidden;
     display: none;
     flex-direction: column;
     gap: 3rem;
@@ -29,12 +32,56 @@
     }
   }
 
+  // Vídeo de fondo del panel de presentación (decorativo)
+  &__fondo {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--sl-bg-elevated); // se ve si el vídeo no carga
+
+    // Capa del color de fondo del tema: mantiene la paleta y suaviza el vídeo.
+    // Es más opaca a la izquierda y casi transparente junto al formulario.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--sl-bg) 55%, transparent),
+        color-mix(in srgb, var(--sl-bg) 15%, transparent)
+      );
+    }
+  }
+
+  &__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // Encuadre: desplaza el vídeo para que el edificio verde central quede junto al panel de texto y no detrás
+    object-position: 20% center;
+  }
+
+  // Botón para pausar el vídeo, abajo a la izquierda
+  &__pausa {
+    align-self: flex-start;
+    margin-top: auto;
+    background: color-mix(in srgb, var(--sl-bg) 80%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
   &__contenido {
     @include flex-columna(1.5rem);
     align-items: flex-start;
     justify-content: center;
-    max-width: 32rem;
+    max-width: 36rem;
     margin-top: 2.5rem;
+    padding: 2rem;
+    // Panel translúcido: el vídeo se ve alrededor y el texto se lee siempre
+    background: color-mix(in srgb, var(--sl-bg) 72%, transparent);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--sl-border);
+    border-radius: $radio-grande;
   }
 
   &__titulo {
@@ -52,28 +99,6 @@
   &__funcionalidades {
     @include flex-columna(0.75rem);
     width: 100%;
-  }
-
-  // Vídeo demo (multimedia, Sprint 3)
-  &__media {
-    width: 100%;
-    margin: 0;
-  }
-
-  &__video {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border: 1px solid var(--sl-border);
-    border-radius: 8px;
-  }
-
-  &__leyenda {
-    margin-top: 0.5rem;
-    font-size: $texto-minimo;
-    color: var(--sl-text-muted);
   }
 
   // Columna derecha: formulario

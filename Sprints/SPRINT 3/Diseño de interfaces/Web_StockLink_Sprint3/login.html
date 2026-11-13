@@ -4,27 +4,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
   <title>StockLink · Iniciar sesión</title>
   <meta name="description" content="Accede a tu panel de control de StockLink.">
 
+  <!-- Precarga de las fuentes de Google antes de cargarlas, para que se vean rápido -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <!-- Tipografías: Work Sans para texto general, JetBrains Mono para datos/código -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="alternate stylesheet" href="assets/css/light.css" title="Claro">
+  <!-- Hoja de estilos principal (tema oscuro por defecto) -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Hoja de estilos alternativa para el tema claro -->
+  <link rel="alternate stylesheet" href="/assets/css/light.css" title="Claro">
+  <!-- Controla el vídeo de fondo: carga solo en escritorio y permite pausarlo -->
+  <script src="js/fondo-video.js" defer></script>
+  <script src="js/tema.js" defer></script>
 </head>
 
 <body>
   <main class="acceso">
 
-    <!-- Lado izquierdo: presentación -->
+    <!-- Lado izquierdo: presentación de la marca y funcionalidades (solo visible en pantallas grandes) -->
     <section class="acceso__presentacion" aria-label="Presentación de StockLink">
 
-      <!-- Logo utilizado .svg -->
+      <!-- Vídeo de fondo decorativo: sin sonido, en bucle, con póster si no se reproduce -->
+      <div class="acceso__fondo" aria-hidden="true">
+        <video class="acceso__video" width="1280" height="720" muted loop playsinline preload="none"
+          poster="assets/media/fondo-acceso.webp" data-fondo-video>
+          <source src="assets/media/fondo-acceso.webm" type="video/webm">
+          <source src="assets/media/fondo-acceso.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Logo con icono SVG y nombre de la app -->
       <div class="logo">
-        <img class="logo__icono" src="assets/svg/logo.svg" alt="" aria-hidden="true">
+        <svg class="logo__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path
+            d="M12 3l4 2.3v4.6L12 12.2 8 9.9V5.3L12 3zM6 12.8l4 2.3v4.6L6 22l-4-2.3v-4.6l4-2.3zm12 0l4 2.3v4.6L18 22l-4-2.3v-4.6l4-2.3z" />
+        </svg>
 
         <span class="logo__nombre">StockLink</span>
         <span class="logo__version">v1.0.0</span>
@@ -42,6 +62,7 @@
           y accede a informes detallados.
         </p>
 
+        <!-- Lista de 3 funcionalidades destacadas, cada una con icono + título + texto -->
         <ul class="acceso__funcionalidades">
 
           <li class="funcionalidad">
@@ -103,35 +124,42 @@
           </li>
 
         </ul>
-
-        <!-- Vídeo demo: WebM (VP9) con MP4 (H.264) como alternativa -->
-        <figure class="acceso__media">
-          <video class="acceso__video" controls muted playsinline preload="metadata"
-            poster="assets/img/video-poster.webp" width="1280" height="720">
-            <source src="assets/media/demo.webm" type="video/webm">
-            <source src="assets/media/demo.mp4" type="video/mp4">
-            Tu navegador no soporta vídeo HTML5.
-          </video>
-          <figcaption class="acceso__leyenda">
-            Demo de StockLink: acceso, panel, productos, almacenes y movimientos.
-          </figcaption>
-        </figure>
       </div>
+
+      <!-- Pausa/reanuda el vídeo de fondo (se muestra solo cuando el vídeo está activo) -->
+      <div class="acceso__acciones">
+          <button class="boton boton--fantasma boton--pequeno acceso__pausa"
+              type="button" data-fondo-pausa hidden>
+              Pausar animación
+          </button>
+
+          <button class="boton boton--fantasma boton--pequeno"
+              type="button" data-theme-toggle>
+              Cambiar tema
+          </button>
+      </div>
+
     </section>
 
     <!-- Lado derecho: formulario de acceso -->
     <section class="acceso__panel">
 
+      <!-- Logo que se muestra solo en móvil (la presentación de la izquierda se oculta) -->
       <div class="acceso__marca">
         <div class="logo">
 
-          <img class="logo__icono" src="assets/svg/logo.svg" alt="" aria-hidden="true">
+          <svg class="logo__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            aria-hidden="true">
+            <path
+              d="M12 3l4 2.3v4.6L12 12.2 8 9.9V5.3L12 3zM6 12.8l4 2.3v4.6L6 22l-4-2.3v-4.6l4-2.3zm12 0l4 2.3v4.6L18 22l-4-2.3v-4.6l4-2.3z" />
+          </svg>
 
           <span class="logo__nombre">StockLink</span>
 
         </div>
       </div>
 
+      <!-- Formulario de login. En esta demo envía por GET directamente al dashboard (sin backend real) -->
       <form class="acceso__formulario" action="dashboard.html" method="get" novalidate>
 
         <div class="acceso__cabecera">
@@ -144,6 +172,7 @@
 
         <div class="acceso__campos">
 
+          <!-- Campo de email -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -157,6 +186,7 @@
 
           </div>
 
+          <!-- Campo de contraseña, con botón para mostrar/ocultar el texto -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -180,6 +210,7 @@
           Entrar
         </button>
 
+        <!-- Enlace a la página de registro -->
         <p class="acceso__pie">
           ¿No tienes cuenta?
           <a class="acceso__enlace" href="register.html">

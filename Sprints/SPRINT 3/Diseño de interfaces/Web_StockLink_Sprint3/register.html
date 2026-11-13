@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
   <title>StockLink · Crear cuenta</title>
   <meta name="description" content="Crea tu cuenta de StockLink y emfooterza a gestionar tu inventario.">
 
@@ -15,20 +15,36 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="alternate stylesheet" href="assets/css/light.css" title="Claro">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate stylesheet" href="/assets/css/light.css" title="Claro">
+  <!-- Controla el vídeo de fondo: carga solo en escritorio y permite pausarlo -->
+  <script src="js/fondo-video.js" defer></script>
+  <script src="js/tema.js" defer></script>
 </head>
 
 <body>
 
   <main class="acceso">
 
-    <!-- Lado izquierdo: presentación -->
+    <!-- Lado izquierdo: misma presentación de marca que en login.html (contenido duplicado a propósito, por simplicidad del wireframe) -->
     <section class="acceso__presentacion" aria-label="Presentación de StockLink">
 
-      <!-- Logo pasado a .svg -->
+      <!-- Vídeo de fondo decorativo: sin sonido, en bucle, con póster si no se reproduce -->
+      <div class="acceso__fondo" aria-hidden="true">
+        <video class="acceso__video" width="1280" height="720" muted loop playsinline preload="none"
+          poster="/assets/media/fondo-acceso.webp" data-fondo-video>
+          <source src="/assets/media/fondo-acceso.webm" type="video/webm">
+          <source src="/assets/media/fondo-acceso.mp4" type="video/mp4">
+        </video>
+      </div>
+
       <div class="logo">
-        <img class="logo__icono" src="assets/svg/logo.svg" alt="" aria-hidden="true">
+
+        <svg class="logo__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          aria-hidden="true">
+          <path
+            d="M12 3l4 2.3v4.6L12 12.2 8 9.9V5.3L12 3zM6 12.8l4 2.3v4.6L6 22l-4-2.3v-4.6l4-2.3zm12 0l4 2.3v4.6L18 22l-4-2.3v-4.6l4-2.3z" />
+        </svg>
 
         <span class="logo__nombre">StockLink</span>
         <span class="logo__version">v1.0.0</span>
@@ -109,22 +125,42 @@
 
         </ul>
       </div>
+
+      <!-- Pausa/reanuda el vídeo de fondo (se muestra solo cuando el vídeo está activo) -->
+      <div class="acceso__acciones">
+          <button class="boton boton--fantasma boton--pequeno acceso__pausa"
+              type="button" data-fondo-pausa hidden>
+              Pausar animación
+          </button>
+
+          <button class="boton boton--fantasma boton--pequeno"
+              type="button" data-theme-toggle>
+              Cambiar tema
+          </button>
+      </div>
+
     </section>
 
     <!-- Lado derecho: formulario de registro -->
     <section class="acceso__panel">
 
+      <!-- Logo que solo se ve en móvil -->
       <div class="acceso__marca">
 
         <div class="logo">
 
-          <img class="logo__icono" src="assets/svg/logo.svg" alt="" aria-hidden="true">
+          <svg class="logo__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            aria-hidden="true">
+            <path
+              d="M12 3l4 2.3v4.6L12 12.2 8 9.9V5.3L12 3zM6 12.8l4 2.3v4.6L6 22l-4-2.3v-4.6l4-2.3zm12 0l4 2.3v4.6L18 22l-4-2.3v-4.6l4-2.3z" />
+          </svg>
 
           <span class="logo__nombre">StockLink</span>
 
         </div>
       </div>
 
+      <!-- Formulario de alta: crea usuario + empresa a la vez. Envía (demo) a login.html -->
       <form class="acceso__formulario" action="login.html" method="post" novalidate>
 
         <div class="acceso__cabecera">
@@ -139,6 +175,7 @@
 
         <div class="acceso__campos">
 
+          <!-- Nombre del usuario -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -152,6 +189,7 @@
 
           </div>
 
+          <!-- Email de acceso -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -165,6 +203,7 @@
 
           </div>
 
+          <!-- Nombre de la empresa que se crea junto con el usuario (alta inicial multiempresa) -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -178,6 +217,7 @@
 
           </div>
 
+          <!-- Contraseña, mínimo 8 caracteres -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -196,6 +236,7 @@
 
           </div>
 
+          <!-- Confirmación de contraseña (validación de coincidencia pendiente de hacerse en el backend/JS) -->
           <div class="campo">
 
             <div class="campo__cabecera">
@@ -220,6 +261,7 @@
           Crear cuenta
         </button>
 
+        <!-- Enlace de vuelta al login -->
         <p class="acceso__footer">
           ¿Ya tienes cuenta?
           <a class="acceso__enlace" href="login.html">
