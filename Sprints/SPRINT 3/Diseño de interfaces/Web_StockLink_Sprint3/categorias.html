@@ -58,6 +58,13 @@
                                 MedStore
                             </a>
                         </li>
+
+                        <li>
+                            <a class="navegacion__enlace" href="#">
+                                <span class="navegacion__punto" aria-hidden="true"></span>
+                                Rincoflor
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -154,7 +161,7 @@
 
                 <header class="panel__cabecera">
                     <h2 class="panel__titulo" id="titulo-listado">Listado de categorías</h2>
-                    <span class="panel__informacion">4 elementos</span>
+                    <span class="panel__informacion">5 elementos</span>
                 </header>
 
                 <form class="barra-herramientas" action="categorias.html" method="get" role="search">
@@ -348,6 +355,46 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr class="tabla-datos__fila">
+                                <td class="tabla-datos__celda">
+                                    <span class="tabla-datos__producto">Flor cortada</span>
+                                    <span class="tabla-datos__referencia">flor-cortada</span>
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Flores frescas de corte: claveles, calas y ramos.
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    2
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--acciones">
+                                    <div class="acciones">
+
+                                        <a
+                                            class="boton boton--fantasma boton--pequeno"
+                                            href="categorias.html?editar=5#formulario"
+                                            aria-label="Editar Flor cortada"
+                                        >
+                                            Editar
+                                        </a>
+
+                                        <form class="acciones__formulario" action="categorias.html" method="post">
+                                            <input type="hidden" name="accion" value="eliminar">
+                                            <input type="hidden" name="id" value="5">
+                                            <button
+                                                class="boton boton--fantasma boton--pequeno boton--peligro"
+                                                type="submit"
+                                                aria-label="Eliminar Flor cortada"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
 
                     </table>
@@ -356,7 +403,7 @@
 
                 <nav class="paginacion" aria-label="Paginación de categorías">
 
-                    <p class="paginacion__resumen">Mostrando 1–4 de 4</p>
+                    <p class="paginacion__resumen">Mostrando 1–5 de 5</p>
 
                     <ul class="paginacion__lista">
                         <li>

@@ -69,6 +69,13 @@
                                 MedStore
                             </a>
                         </li>
+
+                        <li>
+                            <a class="navegacion__enlace" href="#">
+                                <span class="navegacion__punto" aria-hidden="true"></span>
+                                Rincoflor
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -165,7 +172,7 @@
 
                 <header class="panel__cabecera">
                     <h2 class="panel__titulo" id="titulo-listado">Listado de almacenes</h2>
-                    <span class="panel__informacion">4 elementos</span>
+                    <span class="panel__informacion">5 elementos</span>
                 </header>
 
                 <form class="barra-herramientas" action="almacenes.html" method="get" role="search">
@@ -188,6 +195,7 @@
                             <option value="1">TechParts S.L.</option>
                             <option value="2">AgriSur S.A.</option>
                             <option value="3">MedStore S.L.</option>
+                            <option value="5">Rincoflor S.L.</option>
                         </select>
                     </div>
 
@@ -403,6 +411,54 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr class="tabla-datos__fila">
+                                <td class="tabla-datos__celda">
+                                    <span class="tabla-datos__producto">Cámara Rincoflor</span>
+                                    <span class="tabla-datos__referencia">Mercasevilla, Sevilla</span>
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Rincoflor S.L.
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    1500 uds.
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    620 (41%)
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    <span class="etiqueta etiqueta--correcta">Disponible</span>
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--acciones">
+                                    <div class="acciones">
+
+                                        <a
+                                            class="boton boton--fantasma boton--pequeno"
+                                            href="almacenes.html?editar=5#formulario"
+                                            aria-label="Editar Cámara Rincoflor"
+                                        >
+                                            Editar
+                                        </a>
+
+                                        <form class="acciones__formulario" action="almacenes.html" method="post">
+                                            <input type="hidden" name="accion" value="eliminar">
+                                            <input type="hidden" name="id" value="5">
+                                            <button
+                                                class="boton boton--fantasma boton--pequeno boton--peligro"
+                                                type="submit"
+                                                aria-label="Eliminar Cámara Rincoflor"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
 
                     </table>
@@ -411,7 +467,7 @@
 
                 <nav class="paginacion" aria-label="Paginación de almacenes">
 
-                    <p class="paginacion__resumen">Mostrando 1–4 de 4</p>
+                    <p class="paginacion__resumen">Mostrando 1–5 de 5</p>
 
                     <ul class="paginacion__lista">
                         <li>
@@ -473,6 +529,7 @@
                                     <option value="1">TechParts S.L.</option>
                                     <option value="2">AgriSur S.A.</option>
                                     <option value="3">MedStore S.L.</option>
+                                    <option value="5">Rincoflor S.L.</option>
                                 </select>
 
                             </div>
@@ -519,6 +576,7 @@
                                     <option value="2">Ordenadores</option>
                                     <option value="3">Pantallas</option>
                                     <option value="4">Almacenamiento</option>
+                                    <option value="5">Flor cortada</option>
                                 </select>
 
                             </div>

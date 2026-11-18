@@ -65,6 +65,13 @@
                                 MedStore
                             </a>
                         </li>
+
+                        <li>
+                            <a class="navegacion__enlace" href="#">
+                                <span class="navegacion__punto" aria-hidden="true"></span>
+                                Rincoflor
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -161,7 +168,7 @@
 
                 <header class="panel__cabecera">
                     <h2 class="panel__titulo" id="titulo-listado">Listado de movimientos</h2>
-                    <span class="panel__informacion">4 elementos</span>
+                    <span class="panel__informacion">6 elementos</span>
                 </header>
 
                 <form class="barra-herramientas" action="movimientos.html" method="get" role="search">
@@ -193,6 +200,7 @@
                             <option value="">Todos los almacenes</option>
                             <option value="1">Central Sevilla</option>
                             <option value="2">Logística Norte</option>
+                            <option value="5">Cámara Rincoflor</option>
                         </select>
                     </div>
 
@@ -217,6 +225,126 @@
                         </thead>
 
                         <tbody>
+                            <tr class="tabla-datos__fila">
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    17/11/2026
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    <div class="producto">
+                                        <picture class="producto__miniatura">
+                                            <source srcset="assets/img/productos/claveles.avif" type="image/avif">
+                                            <img src="assets/img/productos/claveles.webp" alt="Ramo de claveles rojos" width="40" height="40" loading="lazy" decoding="async">
+                                        </picture>
+                                        <div class="producto__texto">
+                                            <span class="tabla-datos__producto">Claveles rojos</span>
+                                            <span class="tabla-datos__referencia">Reposición pedido #M-0024</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Cámara Rincoflor
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    <span class="etiqueta etiqueta--correcta">Entrada</span>
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    + 400 uds.
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Administrador
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--acciones">
+                                    <div class="acciones">
+
+                                        <a
+                                            class="boton boton--fantasma boton--pequeno"
+                                            href="movimientos.html?editar=5#formulario"
+                                            aria-label="Editar movimiento de Claveles rojos del 17/11/2026"
+                                        >
+                                            Editar
+                                        </a>
+
+                                        <form class="acciones__formulario" action="movimientos.html" method="post">
+                                            <input type="hidden" name="accion" value="eliminar">
+                                            <input type="hidden" name="id" value="5">
+                                            <button
+                                                class="boton boton--fantasma boton--pequeno boton--peligro"
+                                                type="submit"
+                                                aria-label="Eliminar movimiento de Claveles rojos del 17/11/2026"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="tabla-datos__fila">
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    16/11/2026
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    <div class="producto">
+                                        <picture class="producto__miniatura">
+                                            <source srcset="assets/img/productos/calas.avif" type="image/avif">
+                                            <img src="assets/img/productos/calas.webp" alt="Ramo de calas amarillas y rosas" width="40" height="40" loading="lazy" decoding="async">
+                                        </picture>
+                                        <div class="producto__texto">
+                                            <span class="tabla-datos__producto">Calas de colores</span>
+                                            <span class="tabla-datos__referencia">Reposición pedido #M-0025</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Cámara Rincoflor
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    <span class="etiqueta etiqueta--correcta">Entrada</span>
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--numerica">
+                                    + 220 uds.
+                                </td>
+
+                                <td class="tabla-datos__celda">
+                                    Administrador
+                                </td>
+
+                                <td class="tabla-datos__celda tabla-datos__celda--acciones">
+                                    <div class="acciones">
+
+                                        <a
+                                            class="boton boton--fantasma boton--pequeno"
+                                            href="movimientos.html?editar=6#formulario"
+                                            aria-label="Editar movimiento de Calas de colores del 16/11/2026"
+                                        >
+                                            Editar
+                                        </a>
+
+                                        <form class="acciones__formulario" action="movimientos.html" method="post">
+                                            <input type="hidden" name="accion" value="eliminar">
+                                            <input type="hidden" name="id" value="6">
+                                            <button
+                                                class="boton boton--fantasma boton--pequeno boton--peligro"
+                                                type="submit"
+                                                aria-label="Eliminar movimiento de Calas de colores del 16/11/2026"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </td>
+                            </tr>
                             <tr class="tabla-datos__fila">
                                 <td class="tabla-datos__celda tabla-datos__celda--numerica">
                                     20/10/2026
@@ -433,7 +561,7 @@
 
                 <nav class="paginacion" aria-label="Paginación de movimientos">
 
-                    <p class="paginacion__resumen">Mostrando 1–4 de 4</p>
+                    <p class="paginacion__resumen">Mostrando 1–6 de 6</p>
 
                     <ul class="paginacion__lista">
                         <li>
@@ -511,6 +639,8 @@
                                     <option value="2">Teclados</option>
                                     <option value="3">Ordenadores HP</option>
                                     <option value="4">Monitor 24&quot;</option>
+                                    <option value="5">Claveles rojos</option>
+                                    <option value="6">Calas de colores</option>
                                 </select>
 
                             </div>
@@ -525,7 +655,8 @@
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Central Sevilla</option>
                                     <option value="2">Logística Norte</option>
-                                </select>
+                                <option value="5">Cámara Rincoflor</option>
+</select>
 
                             </div>
 
